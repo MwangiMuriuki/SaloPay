@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/layoutBackground"
+        tools:context=".ActivityOTP">
+
+        <ImageView
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/mainLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            app:layout_constraintTop_toBottomOf="@id/header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OTP Verification"
+                android:textSize="32sp"
+                android:fontFamily="@font/muli_extrabold"
+                android:textColor="@color/colorPrimaryDark"
+                android:layout_marginTop="@dimen/dimfortydp" />
+
+            <TextView
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Please enter the verification code sent to your number"
+                android:fontFamily="@font/muli_semibold"
+                android:textSize="15sp"
+                android:textColor="@color/textColorPrimary"
+                android:layout_marginTop="@dimen/dimfivedp" />
+
+            <com.mukesh.OtpView
+                android:id="@+id/otp_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:inputType="number"
+                android:itemBackground="@color/white"
+                android:textColor="@color/textColorPrimary"
+                android:textSize="22sp"
+                android:fontFamily="@font/muli_semibold"
+                app:itemCount="5"
+                app:viewType="rectangle"
+                app:lineColor="@color/colorPrimary"
+                app:lineWidth="1.2dp"
+                app:itemHeight="60dp"
+                app:itemWidth="50dp"
+                app:itemRadius="8dp"
+                app:itemSpacing="15dp"
+                app:hideLineWhenFilled="false"
+                app:state_filled="true"
+                android:cursorVisible="true"
+                app:cursorColor="@color/colorPrimary"
+                app:cursorWidth="2dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:enabled="true" />
+
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btnNext"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/green_round_button_bg"
+                android:layout_marginTop="60dp"
+                android:src="@drawable/btn_arrow"
+                app:fabSize="normal" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/bottom_vector"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:scaleType="fitXY" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
