@@ -1,9 +1,10 @@
-package com.dev.salopay
+package com.dev.salopay.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import com.dev.salopay.R
 import com.dev.salopay.databinding.ActivitySetPasswordBinding
 
 class ActivitySetPassword : AppCompatActivity() {
@@ -15,7 +16,7 @@ class ActivitySetPassword : AppCompatActivity() {
         binding.mainLayout.bringToFront()
 
         binding.btnNext.setOnClickListener {
-            var intent: Intent = Intent(this, MainActivity::class.java)
+            val intent: Intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }

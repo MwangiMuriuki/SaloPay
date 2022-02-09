@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ActivityGetStarted"
+        tools:context=".activities.ActivityGetStarted"
         android:background="@color/layoutBackground">
 
         <ImageView
@@ -60,12 +60,12 @@
                 android:layout_marginEnd="30dp">
 
                 <EditText
-                    android:id="@+id/nameField"
+                    android:id="@+id/companyCodeField"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/edit_text_bg"
                     android:fontFamily="@font/muli_semibold"
-                    android:hint="Full Name..."
+                    android:hint="Company Code..."
                     android:inputType="textPersonName"
                     android:padding="8dp"
                     android:textColor="@color/textColorPrimary"
@@ -84,20 +84,32 @@
                     android:src="@drawable/user_icon" />
             </RelativeLayout>
 
+            <TextView
+                android:id="@+id/getCompanyCode"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="center|end"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:text="Get Your Company Code"
+                android:textSize="14sp"
+                android:fontFamily="@font/muli_semibold"
+                android:textColor="@color/colorPrimary"/>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp">
 
                 <EditText
-                    android:id="@+id/phoneNumberField"
+                    android:id="@+id/idNumberField"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/edit_text_bg"
                     android:fontFamily="@font/muli_semibold"
-                    android:hint="Phone Number..."
+                    android:hint="National ID Number..."
                     android:inputType="phone"
                     android:padding="8dp"
                     android:textColor="@color/textColorPrimary"
@@ -124,6 +136,37 @@
                 android:layout_marginTop="60dp"
                 android:src="@drawable/btn_arrow"
                 app:fabSize="normal" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/toLoginLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:gravity="center|end"
+                    android:text="Already have an account? "
+                    android:fontFamily="@font/muli_semibold"
+                    android:textSize="15sp"
+                    android:textColor="@color/textColorPrimary"/>
+
+                <TextView
+                    android:id="@+id/loginTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:gravity="center|end"
+                    android:text=" Login"
+                    android:fontFamily="@font/muli_bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorPrimary"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

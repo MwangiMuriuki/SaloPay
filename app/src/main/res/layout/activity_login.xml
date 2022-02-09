@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/layoutBackground"
-        tools:context=".ActivityLogin">
+        tools:context=".activities.ActivityLogin">
 
         <ImageView
             android:id="@+id/header"
@@ -125,6 +125,8 @@
                 android:layout_marginTop="60dp"
                 android:src="@drawable/btn_arrow"
                 app:fabSize="normal" />
+
+
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

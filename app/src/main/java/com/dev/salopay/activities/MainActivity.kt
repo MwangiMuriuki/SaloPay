@@ -1,9 +1,9 @@
-package com.dev.salopay
+package com.dev.salopay.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import com.dev.salopay.databinding.ActivityLoginBinding
+import com.dev.salopay.R
 import com.dev.salopay.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

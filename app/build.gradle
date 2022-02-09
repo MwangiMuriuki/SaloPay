@@ -50,4 +50,10 @@ dependencies {
 
     /*OTP*/
     implementation 'com.github.mukeshsolanki:android-otpview-pinview:2.1.0'
+
+    /*FAST NETWORKING*/
+    implementation 'com.amitshekhar.android:android-networking:1.0.2'
+    implementation 'com.amitshekhar.android:rx2-android-networking:1.0.2'
+
+    implementation 'com.github.d-max:spots-dialog:0.7@aar'
 }

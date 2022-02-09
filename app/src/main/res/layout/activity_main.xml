@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity"
+        tools:context=".activities.MainActivity"
         android:background="@color/layoutBackground">
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -213,7 +213,6 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.cardview.widget.CardView>
-
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/requestAdvanceBtn"

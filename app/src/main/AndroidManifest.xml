@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.dev.salopay">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/app_icon"
@@ -11,16 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SaloPay">
         <activity
-            android:name=".ActivitySetPassword"
-            android:configChanges="orientation|keyboardHidden|screenLayout|screenSize|smallestScreenSize|uiMode"
-            android:exported="true"
-            android:resizeableActivity="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.SaloPay.NoActionBar"
-            android:windowSoftInputMode="adjustResize|stateHidden"
-            tools:ignore="LockedOrientationActivity"/>
+            android:name=".activities.ActivityCheckLogin"
+            android:exported="false" />
         <activity
-            android:name=".ActivityGetStarted"
+            android:name=".activities.ActivitySplashScreen"
             android:configChanges="orientation|keyboardHidden|screenLayout|screenSize|smallestScreenSize|uiMode"
             android:exported="true"
             android:resizeableActivity="true"
@@ -35,17 +32,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ActivityOTP"
+            android:name=".activities.ActivitySetPassword"
             android:configChanges="orientation|keyboardHidden|screenLayout|screenSize|smallestScreenSize|uiMode"
             android:exported="true"
             android:resizeableActivity="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SaloPay.NoActionBar"
             android:windowSoftInputMode="adjustResize|stateHidden"
-            tools:ignore="LockedOrientationActivity"/>
-
+            tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ActivityLogin"
+            android:name=".activities.ActivityGetStarted"
             android:configChanges="orientation|keyboardHidden|screenLayout|screenSize|smallestScreenSize|uiMode"
             android:exported="true"
             android:resizeableActivity="true"
@@ -53,21 +49,37 @@
             android:theme="@style/Theme.SaloPay.NoActionBar"
             android:windowSoftInputMode="adjustResize|stateHidden"
             tools:ignore="LockedOrientationActivity"/>
-
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.ActivityOTP"
             android:configChanges="orientation|keyboardHidden|screenLayout|screenSize|smallestScreenSize|uiMode"
             android:exported="true"
             android:resizeableActivity="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SaloPay.NoActionBar"
             android:windowSoftInputMode="adjustResize|stateHidden"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activities.ActivityLogin"
+            android:configChanges="orientation|keyboardHidden|screenLayout|screenSize|smallestScreenSize|uiMode"
+            android:exported="true"
+            android:resizeableActivity="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.SaloPay.NoActionBar"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".activities.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenLayout|screenSize|smallestScreenSize|uiMode"
+            android:exported="true"
+            android:resizeableActivity="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.SaloPay.NoActionBar"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            tools:ignore="LockedOrientationActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
     </application>
 
 </manifest>
