@@ -22,7 +22,25 @@
     <style name="verifyAccAlert" parent="android:Theme.DeviceDefault.Dialog">
         <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
         <item name="DialogTitleText">Please Wait...</item>
-        <item name="DialogSpotColor">@color/colorPrimary</item>
+        <item name="DialogSpotColor">@color/colorAccent</item>
+        <item name="DialogSpotCount">5</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="verifyOTPAlert" parent="android:Theme.DeviceDefault.Dialog">
+        <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
+        <item name="DialogTitleText">Please Wait...</item>
+        <item name="DialogSpotColor">@color/colorAccent</item>
+        <item name="DialogSpotCount">5</item>
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="createAccountAlert" parent="android:Theme.DeviceDefault.Dialog">
+        <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
+        <item name="DialogTitleText">Please Wait...</item>
+        <item name="DialogSpotColor">@color/colorAccent</item>
         <item name="DialogSpotCount">5</item>
         <item name="android:textColor">@color/textColorPrimary</item>
         <item name="android:background">@color/white</item>

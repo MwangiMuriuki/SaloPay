@@ -22,7 +22,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
+        
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/mainLayout"
             android:layout_width="match_parent"
@@ -132,8 +132,8 @@
                 android:id="@+id/btnNext"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:background="@drawable/green_round_button_bg"
-                android:layout_marginTop="60dp"
+                android:background="@drawable/accent_round_button"
+                android:layout_marginTop="50dp"
                 android:src="@drawable/btn_arrow"
                 app:fabSize="normal" />
 

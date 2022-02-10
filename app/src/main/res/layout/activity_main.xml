@@ -13,7 +13,7 @@
         tools:context=".activities.MainActivity"
         android:background="@color/layoutBackground">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/headerLayout"
             android:layout_width="match_parent"
             android:layout_height="220dp"
@@ -26,30 +26,43 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/iconLayout"
                 android:layout_width="65dp"
                 android:layout_height="65dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/white_round_bg"
-                android:gravity="center">
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
 
-                <TextView
-                    android:id="@+id/initialsTV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/muli_extrabold"
-                    android:text="EM"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="28sp" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/header_icon"/>
+
+<!--                <TextView-->
+<!--                    android:id="@+id/initialsTV"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:fontFamily="@font/muli_extrabold"-->
+<!--                    android:text="EM"-->
+<!--                    android:textColor="@color/colorPrimaryDark"-->
+<!--                    android:textSize="28sp" />-->
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.LinearLayoutCompat
+               android:id="@+id/nameLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginBottom="20dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                app:layout_constraintStart_toEndOf="@id/iconLayout"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
 
                 <TextView
                     android:id="@+id/timeGreeting"
@@ -71,7 +84,19 @@
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+            <ImageView
+                android:id="@+id/logoutView"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="15dp"
+                android:layout_gravity="center|end"
+                android:src="@drawable/logout_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -120,7 +145,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/muli_semibold"
-                        android:textSize="14sp"
+                        android:textSize="15sp"
                         android:textColor="@color/textColorPrimary"
                         android:layout_margin="@dimen/dimtendp"
                         android:text="Running low on cash? Worry not! \nWe Gat You!!!"/>
@@ -158,6 +183,7 @@
                                 android:fontFamily="@font/muli_semibold"/>
 
                             <TextView
+                                android:id="@+id/advanceLimit"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="KES 50,000"
@@ -195,9 +221,10 @@
                                 android:fontFamily="@font/muli_semibold"/>
 
                             <TextView
+                                android:id="@+id/previousAdvance"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="KES 23,500"
+                                android:text="N.A"
                                 android:textColor="@color/textColorPrimary"
                                 android:layout_gravity="center"
                                 android:textSize="20sp"
@@ -226,7 +253,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/green_btn_background"
+            android:background="@drawable/accent_btn_background"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>

@@ -4,8 +4,8 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.common.Priority
@@ -22,6 +22,9 @@ class ActivityGetStarted : AppCompatActivity() {
     private lateinit var binding: ActivityGetStartedBinding
     lateinit var preferenceManager: PreferenceManager
     var alertDialog: AlertDialog? = null
+
+    var companyCode: String? = null
+    var nationalID: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,28 +49,28 @@ class ActivityGetStarted : AppCompatActivity() {
     }
 
     private fun validateFields() {
-        var companyCode = binding.companyCodeField.text
-        var nationalID = binding.idNumberField.text
+        companyCode = binding.companyCodeField.text.toString()
+        nationalID = binding.idNumberField.text.toString()
 
-        if (companyCode.isEmpty()){
-
+        if (companyCode!!.isEmpty()){
+            Toast.makeText(this, "Please Enter your Company Code", Toast.LENGTH_LONG).show()
         }
-        else if (nationalID.isEmpty()){
+        else if (nationalID!!.isEmpty()){
+            Toast.makeText(this, "Please Enter your National ID Number", Toast.LENGTH_LONG).show()
 
         }
         else{
 
             (alertDialog as SpotsDialog).setCancelable(false)
             (alertDialog as SpotsDialog).show()
-            verifyUser(companyCode, nationalID)
 
+            verifyUser(companyCode, nationalID)
 
         }
     }
 
-    private fun verifyUser(companyCode: Editable, nationalID: Editable) {
+    private fun verifyUser(companyCode: String?, nationalID: String?) {
         val FULL_PATH = Config.BASE_URL + Config.verify_account
-        val auth_token: String? = preferenceManager.apiKey
 
         AndroidNetworking.post(FULL_PATH)
             .addBodyParameter("code", companyCode.toString())
@@ -75,8 +78,7 @@ class ActivityGetStarted : AppCompatActivity() {
             .setTag("FetchAccounts")
             .setPriority(Priority.HIGH)
             .build()
-            .getAsObject( AccountVerificationResponseDataClass::class.java,
-                object : ParsedRequestListener<AccountVerificationResponseDataClass> {
+            .getAsObject( AccountVerificationResponseDataClass::class.java, object : ParsedRequestListener<AccountVerificationResponseDataClass> {
                     override fun onResponse(response: AccountVerificationResponseDataClass?) {
                         alertDialog?.dismiss()
                         if (response!=null) {
@@ -84,16 +86,21 @@ class ActivityGetStarted : AppCompatActivity() {
                             val message = response.message
                             if (success){
                                 Log.d("success_message", message!!)
-                                redirect()
+                                Toast.makeText(this@ActivityGetStarted, "Success: " + message, Toast.LENGTH_LONG).show()
+
+                                val phoneNumber = response.data?.phone_number
+
+                                redirect(phoneNumber)
                             }
                             else{
+                                Toast.makeText(this@ActivityGetStarted, "Failed: " + message, Toast.LENGTH_LONG).show()
+
                                 Log.d("failure_message", message!!)
                             }
                         }
                         else{
-
+                            Toast.makeText(this@ActivityGetStarted, "Response is null", Toast.LENGTH_LONG).show()
                         }
-
 
                     }
 
@@ -105,8 +112,11 @@ class ActivityGetStarted : AppCompatActivity() {
                 })
     }
 
-    private fun redirect(){
-        var intent: Intent = Intent(this, ActivityOTP::class.java)
+    private fun redirect(phoneNumber: String?) {
+        preferenceManager.userIdNumber = nationalID
+        val intent: Intent = Intent(this, ActivityOTP::class.java)
+        intent.putExtra("phoneNumber", phoneNumber)
         startActivity(intent)
+        finish()
     }
 }

@@ -60,17 +60,17 @@
                 android:layout_marginEnd="30dp">
 
                 <EditText
-                    android:id="@+id/nameField"
+                    android:id="@+id/idField"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/edit_text_bg"
                     android:fontFamily="@font/muli_semibold"
-                    android:hint="Full Name..."
+                    android:hint="National ID"
                     android:inputType="textPersonName"
                     android:padding="8dp"
                     android:textColor="@color/textColorPrimary"
                     android:textColorHint="@color/textColorSecondary"
-                    android:textSize="15sp" />
+                    android:textSize="16sp" />
 
                 <ImageView
                     android:layout_width="20dp"
@@ -92,17 +92,17 @@
                 android:layout_marginEnd="30dp">
 
                 <EditText
-                    android:id="@+id/phoneNumberField"
+                    android:id="@+id/passwordField"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/edit_text_bg"
                     android:fontFamily="@font/muli_semibold"
-                    android:hint="Phone Number..."
-                    android:inputType="phone"
+                    android:hint="Password"
+                    android:inputType="textPassword"
                     android:padding="8dp"
                     android:textColor="@color/textColorPrimary"
                     android:textColorHint="@color/textColorSecondary"
-                    android:textSize="15sp" />
+                    android:textSize="16sp" />
 
                 <ImageView
                     android:layout_width="20dp"
@@ -113,7 +113,7 @@
                     android:layout_marginEnd="5dp"
                     android:layout_marginBottom="5dp"
                     android:padding="2dp"
-                    android:src="@drawable/phone_icon" />
+                    android:src="@drawable/password_icon" />
             </RelativeLayout>
 
 
@@ -121,12 +121,54 @@
                 android:id="@+id/btnNext"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:background="@drawable/green_round_button_bg"
-                android:layout_marginTop="60dp"
+                android:background="@drawable/accent_round_button"
+                android:layout_marginTop="40dp"
                 android:src="@drawable/btn_arrow"
                 app:fabSize="normal" />
 
+            <TextView
+                android:id="@+id/forgotPassword"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:gravity="center"
+                android:text="Forgot Password?"
+                android:fontFamily="@font/muli_semibold"
+                android:textSize="16sp"
+                android:textColor="@color/textColorSecondary"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"/>
 
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/toGetStartedLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:gravity="center|end"
+                    android:text="Already have an account? "
+                    android:fontFamily="@font/muli_semibold"
+                    android:textSize="15sp"
+                    android:textColor="@color/textColorPrimary"/>
+
+                <TextView
+                    android:id="@+id/loginTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:gravity="center|end"
+                    android:text=" Sign Up"
+                    android:fontFamily="@font/muli_bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorPrimary"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
