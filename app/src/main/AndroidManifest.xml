@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SaloPay">
         <activity
+            android:name=".activities.ActivityRequestAdvance"
+            android:exported="false" />
+        <activity
             android:name=".activities.ActivityCheckLogin"
             android:exported="false" />
         <activity
@@ -48,7 +51,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SaloPay.NoActionBar"
             android:windowSoftInputMode="adjustResize|stateHidden"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activities.ActivityOTP"
             android:configChanges="orientation|keyboardHidden|screenLayout|screenSize|smallestScreenSize|uiMode"

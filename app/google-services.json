@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "451037895414",
+    "project_id": "salopay-5388f",
+    "storage_bucket": "salopay-5388f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451037895414:android:fe0eb810071d6382e0aad7",
+        "android_client_info": {
+          "package_name": "com.dev.salopay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "451037895414-lnjcemh483i9b6i1s836okd5p2shn1di.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwGFm2zLZ3itflrWQDfSgsq5AEtmNS0PQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "451037895414-lnjcemh483i9b6i1s836okd5p2shn1di.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

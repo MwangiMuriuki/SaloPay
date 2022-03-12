@@ -14,6 +14,7 @@ public class PreferenceManager {
     public static String LAST_NAME = "LAST_NAME";
     public static String ADVANCE_LIMIT = "ADVANCE_LIMIT";
     public static String COMPANY_NAME = "COMPANY_NAME";
+    public static String CYCLE_ID = "CYCLE_ID";
 
 
     public PreferenceManager(Context context){
@@ -34,8 +35,8 @@ public class PreferenceManager {
         return sharedPreferences.getString(USER_PHONE_NUMBER, "");
     }
 
-    public void setUserPhoneNumber(String apiKey) {
-        preferenceEditor.putString(USER_PHONE_NUMBER, apiKey);
+    public void setUserPhoneNumber(String userPhoneNumber) {
+        preferenceEditor.putString(USER_PHONE_NUMBER, userPhoneNumber);
         preferenceEditor.commit();
     }
 
@@ -43,8 +44,8 @@ public class PreferenceManager {
         return sharedPreferences.getString(USER_ID_NUMBER, "");
     }
 
-    public void setUserIdNumber(String apiKey) {
-        preferenceEditor.putString(USER_ID_NUMBER, apiKey);
+    public void setUserIdNumber(String userIdNumber) {
+        preferenceEditor.putString(USER_ID_NUMBER, userIdNumber);
         preferenceEditor.commit();
     }
 
@@ -52,8 +53,8 @@ public class PreferenceManager {
         return sharedPreferences.getString(FIRST_NAME, "");
     }
 
-    public void setFirstName(String apiKey) {
-        preferenceEditor.putString(FIRST_NAME, apiKey);
+    public void setFirstName(String firstName) {
+        preferenceEditor.putString(FIRST_NAME, firstName);
         preferenceEditor.commit();
     }
 
@@ -61,8 +62,8 @@ public class PreferenceManager {
         return sharedPreferences.getString(LAST_NAME, "");
     }
 
-    public void setLastName(String apiKey) {
-        preferenceEditor.putString(LAST_NAME, apiKey);
+    public void setLastName(String lastName) {
+        preferenceEditor.putString(LAST_NAME, lastName);
         preferenceEditor.commit();
     }
 
@@ -70,8 +71,8 @@ public class PreferenceManager {
         return sharedPreferences.getString(ADVANCE_LIMIT, "");
     }
 
-    public void setAdvanceLimit(String apiKey) {
-        preferenceEditor.putString(ADVANCE_LIMIT, apiKey);
+    public void setAdvanceLimit(String advanceLimit) {
+        preferenceEditor.putString(ADVANCE_LIMIT, advanceLimit);
         preferenceEditor.commit();
     }
 
@@ -79,8 +80,17 @@ public class PreferenceManager {
         return sharedPreferences.getString(COMPANY_NAME, "");
     }
 
-    public void setCompanyName(String apiKey) {
-        preferenceEditor.putString(COMPANY_NAME, apiKey);
+    public void setCompanyName(String companyName) {
+        preferenceEditor.putString(COMPANY_NAME, companyName);
+        preferenceEditor.commit();
+    }
+
+    public String getCycleId() {
+        return sharedPreferences.getString(CYCLE_ID, "");
+    }
+
+    public void setCycleId(String cycleId) {
+        preferenceEditor.putString(CYCLE_ID, cycleId);
         preferenceEditor.commit();
     }
 

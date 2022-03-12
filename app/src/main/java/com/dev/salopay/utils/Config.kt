@@ -8,5 +8,6 @@ class Config {
         var verify_account: String = "verify_account"
         var verify_otp: String = "verify_otp_code"
         var create_password: String = "create_user_account"
+        var serviceData: String = "service"
     }
 }
