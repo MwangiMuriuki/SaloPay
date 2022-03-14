@@ -13,6 +13,7 @@ public class PreferenceManager {
     public static String FIRST_NAME = "FIRST_NAME";
     public static String LAST_NAME = "LAST_NAME";
     public static String ADVANCE_LIMIT = "ADVANCE_LIMIT";
+    public static String ADVANCE_LIMIT_FORMATTED = "ADVANCE_LIMIT_FORMATTED";
     public static String COMPANY_NAME = "COMPANY_NAME";
     public static String CYCLE_ID = "CYCLE_ID";
 
@@ -73,6 +74,15 @@ public class PreferenceManager {
 
     public void setAdvanceLimit(String advanceLimit) {
         preferenceEditor.putString(ADVANCE_LIMIT, advanceLimit);
+        preferenceEditor.commit();
+    }
+
+    public String getAdvanceLimitFormatted() {
+        return sharedPreferences.getString(ADVANCE_LIMIT_FORMATTED, "");
+    }
+
+    public void setAdvanceLimitFormatted(String advanceLimit) {
+        preferenceEditor.putString(ADVANCE_LIMIT_FORMATTED, advanceLimit);
         preferenceEditor.commit();
     }
 

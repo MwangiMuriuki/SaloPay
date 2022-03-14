@@ -27,8 +27,8 @@
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/iconLayout"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/white_round_bg"
@@ -41,15 +41,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/header_icon"/>
-
-<!--                <TextView-->
-<!--                    android:id="@+id/initialsTV"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:fontFamily="@font/muli_extrabold"-->
-<!--                    android:text="EM"-->
-<!--                    android:textColor="@color/colorPrimaryDark"-->
-<!--                    android:textSize="28sp" />-->
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

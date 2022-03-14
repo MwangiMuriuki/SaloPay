@@ -84,7 +84,12 @@ class ActivityLogin : AppCompatActivity() {
                         if (success){
                             Log.d("success_message", message!!)
                             Toast.makeText(this@ActivityLogin, "Success: " + message, Toast.LENGTH_LONG).show()
+
                             preferenceManager.apiKey = response.data?.token
+                            preferenceManager.firstName = response.data?.user?.user_info?.first_name
+                            preferenceManager.lastName = response.data?.user?.user_info?.last_name
+                            preferenceManager.advanceLimit = response.data?.user?.user_info?.sa_amount_limit.toString()
+                            preferenceManager.advanceLimitFormatted = response.data?.user?.user_info?.sa_amount_limit_formatted
 
                             redirect()
                         }

@@ -20,6 +20,7 @@ import com.dev.salopay.utils.PreferenceManager
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     lateinit var preferenceManager: PreferenceManager
+    var interestRate: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,9 +28,9 @@ class MainActivity : AppCompatActivity() {
         preferenceManager = PreferenceManager(this)
         fetchServiceData()
 
-        var advanceLimit = preferenceManager.advanceLimit
+        val advanceLimit = preferenceManager.advanceLimitFormatted
 
-        binding.advanceLimit.text = "KES " + advanceLimit
+        binding.advanceLimit.text = advanceLimit
         binding.username.text = preferenceManager.firstName
 
         binding.logoutView.setOnClickListener {
@@ -39,6 +40,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        binding.requestAdvanceBtn.setOnClickListener {
+            val intent: Intent = Intent(this, ActivityRequestAdvance::class.java)
+            intent.putExtra("interestRate", interestRate.toString())
+            startActivity(intent)
+        }
+
     }
 
     private fun fetchServiceData() {
@@ -65,6 +73,7 @@ class MainActivity : AppCompatActivity() {
 
                             if (fecthedServiceData != null){
                                 val cycle_id = fecthedServiceData.active_cycle?.id
+                                interestRate = fecthedServiceData.active_cycle?.rate!!
                                 preferenceManager.cycleId = cycle_id.toString()
                             }
 

@@ -21,7 +21,8 @@ data class LoginDataClass(
                 var phone_number: String? = null,
                 var id_number: String? = null,
                 var sa_amount_limit: Int = 0,
-                var client_name: String? = null
+                var client_name: String? = null,
+                var sa_amount_limit_formatted: String? = null
             ){}
         }
     }

@@ -7,7 +7,9 @@ data class ServiceDataClass(
 ) {}
 
 data class ServiceData(
-    var service: Service? = null
+    var previous_transaction: String? = null,
+    var service: Service? = null,
+    var transaction_charges: List<TransactionCharges> = ArrayList<TransactionCharges>()
 ){
     data class Service(
         var id: Int? = 0,
@@ -34,5 +36,11 @@ data class ServiceData(
             var is_closed: Int? = 0,
             ){}
     }
+
+    data class TransactionCharges(
+        var from: Int = 0,
+        var to: Int = 0,
+        var charges: Int = 0
+    ){}
 }
 

@@ -15,10 +15,19 @@
         android:theme="@style/Theme.SaloPay">
         <activity
             android:name=".activities.ActivityRequestAdvance"
-            android:exported="false" />
+            android:configChanges="orientation|keyboardHidden|screenLayout|screenSize|smallestScreenSize|uiMode"
+            android:exported="true"
+            android:resizeableActivity="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.SaloPay.NoActionBar"
+            android:windowSoftInputMode="stateHidden"
+            tools:ignore="LockedOrientationActivity"
+            tools:targetApi="n" />
+
         <activity
             android:name=".activities.ActivityCheckLogin"
             android:exported="false" />
+
         <activity
             android:name=".activities.ActivitySplashScreen"
             android:configChanges="orientation|keyboardHidden|screenLayout|screenSize|smallestScreenSize|uiMode"
@@ -27,7 +36,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SaloPay.NoActionBar"
             android:windowSoftInputMode="adjustResize|stateHidden"
-            tools:ignore="LockedOrientationActivity">
+            tools:ignore="LockedOrientationActivity"
+            tools:targetApi="n">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,7 +52,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SaloPay.NoActionBar"
             android:windowSoftInputMode="adjustResize|stateHidden"
-            tools:ignore="LockedOrientationActivity" />
+            tools:ignore="LockedOrientationActivity"
+            tools:targetApi="n"/>
+
         <activity
             android:name=".activities.ActivityGetStarted"
             android:configChanges="orientation|keyboardHidden|screenLayout|screenSize|smallestScreenSize|uiMode"
@@ -51,7 +63,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SaloPay.NoActionBar"
             android:windowSoftInputMode="adjustResize|stateHidden"
-            tools:ignore="LockedOrientationActivity" />
+            tools:ignore="LockedOrientationActivity"
+            tools:targetApi="n"/>
+
         <activity
             android:name=".activities.ActivityOTP"
             android:configChanges="orientation|keyboardHidden|screenLayout|screenSize|smallestScreenSize|uiMode"
@@ -60,7 +74,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SaloPay.NoActionBar"
             android:windowSoftInputMode="adjustResize|stateHidden"
-            tools:ignore="LockedOrientationActivity" />
+            tools:ignore="LockedOrientationActivity"
+            tools:targetApi="n"/>
+
         <activity
             android:name=".activities.ActivityLogin"
             android:configChanges="orientation|keyboardHidden|screenLayout|screenSize|smallestScreenSize|uiMode"
@@ -69,7 +85,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SaloPay.NoActionBar"
             android:windowSoftInputMode="adjustResize|stateHidden"
-            tools:ignore="LockedOrientationActivity" />
+            tools:ignore="LockedOrientationActivity"
+            tools:targetApi="n"/>
+
         <activity
             android:name=".activities.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenLayout|screenSize|smallestScreenSize|uiMode"
@@ -78,7 +96,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.SaloPay.NoActionBar"
             android:windowSoftInputMode="adjustResize|stateHidden"
-            tools:ignore="LockedOrientationActivity" />
+            tools:ignore="LockedOrientationActivity"
+            tools:targetApi="n"/>
 
         <meta-data
             android:name="preloaded_fonts"
