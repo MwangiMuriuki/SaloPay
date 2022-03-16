@@ -5,10 +5,13 @@
       <map>
         <entry key="app/src/main/res/drawable/accent_btn_background.xml" value="0.218" />
         <entry key="app/src/main/res/drawable/accent_round_button.xml" value="0.218" />
+        <entry key="app/src/main/res/drawable/btn_grey_bg.xml" value="0.2225" />
         <entry key="app/src/main/res/drawable/edit_text_bg.xml" value="0.2205" />
         <entry key="app/src/main/res/drawable/green_btn_background.xml" value="0.17" />
         <entry key="app/src/main/res/drawable/green_round_button_bg.xml" value="0.2205" />
         <entry key="app/src/main/res/drawable/light_green_layout_bg.xml" value="0.17" />
+        <entry key="app/src/main/res/drawable/rounded_cancel_btn_bg.xml" value="0.2225" />
+        <entry key="app/src/main/res/drawable/rounded_confirm_btn_bg.xml" value="0.2225" />
         <entry key="app/src/main/res/drawable/white_round_bg.xml" value="0.2205" />
         <entry key="app/src/main/res/layout/activity_get_started.xml" value="0.33152173913043476" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
@@ -17,6 +20,8 @@
         <entry key="app/src/main/res/layout/activity_request_advance.xml" value="0.265301423235168" />
         <entry key="app/src/main/res/layout/activity_set_password.xml" value="0.33152173913043476" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.33152173913043476" />
+        <entry key="app/src/main/res/layout/advance_transaction_layout.xml" value="0.34193840579710144" />
+        <entry key="app/src/main/res/layout/confirm_action_alert.xml" value="0.34193840579710144" />
       </map>
     </option>
   </component>

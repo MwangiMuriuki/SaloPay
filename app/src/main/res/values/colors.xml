@@ -18,6 +18,8 @@
     <color name="textColorPrimary">#031609</color>
     <color name="textColorSecondary">#707973</color>
     <color name="lighterGreen">#CFEDE1</color>
+    <color name="lightestGreen">#F3FAF7</color>
+    <color name="colorGrey">#8F8F8F</color>
 
 
 </resources>
