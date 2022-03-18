@@ -1,9 +1,12 @@
 package com.dev.salopay.activities
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -19,11 +22,13 @@ import com.dev.salopay.databinding.ActivityMainBinding
 import com.dev.salopay.dataclasses.CurrentAdvanceTransactionsDataClass
 import com.dev.salopay.dataclasses.ServiceData
 import com.dev.salopay.dataclasses.ServiceDataClass
+import com.dev.salopay.utils.BaseActivity
 import com.dev.salopay.utils.Config
 import com.dev.salopay.utils.PreferenceManager
 import java.io.Serializable
+import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     private lateinit var binding: ActivityMainBinding
     lateinit var preferenceManager: PreferenceManager
     var interestRate: Int = 0
@@ -38,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         preferenceManager = PreferenceManager(this)
+        getCurrentTime()
         fetchServiceData()
         fetchCurrentAdvanceData()
 
@@ -46,35 +52,55 @@ class MainActivity : AppCompatActivity() {
         binding.currentAdvanceRV.layoutManager = LinearLayoutManager(this)
 
         binding.logoutView.setOnClickListener {
+            showConfirmAlertDialog()
+        }
+    }
+
+    private fun getCurrentTime() {
+        val currentTime = Calendar.getInstance()
+        Log.d("time", currentTime.toString())
+
+        val now = Calendar.getInstance()
+        if (currentTime[Calendar.AM_PM] == Calendar.AM) {
+            // AM
+            Log.d("LoggedTime: ", currentTime[Calendar.HOUR].toString() + " AM")
+            binding.timeGreeting.text = "Good Morning"
+        } else {
+            // PM
+            Log.d("LoggedTime: ", currentTime[Calendar.HOUR].toString() + " PM")
+            if (currentTime[Calendar.HOUR] >= 5){
+                binding.timeGreeting.text = "Good Evening"
+            }
+            else{
+                binding.timeGreeting.text = "Good Afternoon"
+            }
+        }
+    }
+
+    private fun showConfirmAlertDialog() {
+        val customView: View = layoutInflater.inflate(R.layout.confirm_action_alert, null)
+        val messageField = customView.findViewById<TextView>(R.id.message)
+        val confirmButton = customView.findViewById<Button>(R.id.btnProceed)
+        val cancelButton = customView.findViewById<Button>(R.id.btnCancel)
+
+        messageField.text = "You are about to Logout of your Account. Are you sure you want to perform this action?"
+        confirmButton.text = "Logout"
+
+        val builder = AlertDialog.Builder(this@MainActivity)
+        builder.setView(customView)
+        builder.setCancelable(false)
+        val dialog = builder.create()
+        dialog.show()
+
+        cancelButton.setOnClickListener { dialog.dismiss() }
+
+        confirmButton.setOnClickListener {
             preferenceManager.apiKey = ""
 
             val intent: Intent = Intent(this, ActivityLogin::class.java)
             startActivity(intent)
             finish()
         }
-
-//        if (cycleIsActive){
-//            binding.requestAdvanceBtn.background = ContextCompat.getDrawable(this, R.drawable.accent_btn_background)
-//            binding.requestAdvanceBtn.setOnClickListener {
-//                val intent: Intent = Intent(this, ActivityRequestAdvance::class.java)
-//                val bundle = Bundle()
-//
-//                bundle.putSerializable("transaction_charges", transactionCharges as Serializable)
-//                intent.putExtra("interestRate", interestRate.toString())
-//                intent.putExtra("cycleID", cycle_id.toString())
-//                intent.putExtras(bundle)
-//
-//                startActivity(intent)
-//            }
-//        }
-//        else{
-//            binding.requestAdvanceBtn.background = ContextCompat.getDrawable(this, R.drawable.btn_grey_background)
-//            binding.requestAdvanceBtn.setOnClickListener {
-//                Toast.makeText(this@MainActivity, "The Advance Period for this month has elapsed. Please Wait until the next period.", Toast.LENGTH_LONG).show()
-//
-//            }
-//        }
-
     }
 
     private fun fetchCurrentAdvanceData() {

@@ -5,6 +5,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.androidnetworking.AndroidNetworking
@@ -45,6 +48,22 @@ class ActivityGetStarted : AppCompatActivity() {
         binding.toLoginLayout.setOnClickListener {
             var intent: Intent = Intent(this, ActivityLogin::class.java)
             startActivity(intent)
+        }
+
+        binding.getCompanyCode.setOnClickListener {
+                val customView: View = layoutInflater.inflate(R.layout.get_company_code_alert, null)
+                val confirmButton = customView.findViewById<Button>(R.id.btnProceed)
+
+                val builder = AlertDialog.Builder(this@ActivityGetStarted)
+                builder.setView(customView)
+                builder.setCancelable(false)
+                val dialog = builder.create()
+                dialog.show()
+
+                confirmButton.setOnClickListener {
+                    dialog.dismiss()
+                }
+
         }
     }
 

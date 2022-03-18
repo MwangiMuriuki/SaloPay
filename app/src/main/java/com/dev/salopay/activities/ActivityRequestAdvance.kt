@@ -20,12 +20,15 @@ import com.dev.salopay.R
 import com.dev.salopay.databinding.ActivityRequestAdvanceBinding
 import com.dev.salopay.dataclasses.ServiceData
 import com.dev.salopay.dataclasses.ServiceRequestDataClass
+import com.dev.salopay.utils.BaseActivity
 import com.dev.salopay.utils.Config
 import com.dev.salopay.utils.PreferenceManager
 import dmax.dialog.SpotsDialog
 import java.math.RoundingMode
+import java.text.NumberFormat
+import java.util.*
 
-class ActivityRequestAdvance : AppCompatActivity() {
+class ActivityRequestAdvance : BaseActivity() {
     private lateinit var binding: ActivityRequestAdvanceBinding
     lateinit var preferenceManager: PreferenceManager
     var alertDialog: AlertDialog? = null
@@ -38,7 +41,7 @@ class ActivityRequestAdvance : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_request_advance)
         preferenceManager = PreferenceManager(this)
         alertDialog = SpotsDialog(this, R.style.neutralAlert)
-
+        getCurrentTime()
 
         binding.backBtn.setOnClickListener {
             finish()
@@ -57,6 +60,31 @@ class ActivityRequestAdvance : AppCompatActivity() {
         binding.requestAdvanceBtn.setOnClickListener {
             validateField()
         }
+
+        binding.logoutView.setOnClickListener {
+            showLogoutConfirmAlertDialog()
+        }
+    }
+
+    private fun getCurrentTime() {
+        val currentTime = Calendar.getInstance()
+        Log.d("time", currentTime.toString())
+
+        val now = Calendar.getInstance()
+        if (currentTime[Calendar.AM_PM] == Calendar.AM) {
+            // AM
+            Log.d("LoggedTime: ", currentTime[Calendar.HOUR].toString() + " AM")
+            binding.timeGreeting.text = "Good Morning"
+        } else {
+            // PM
+            Log.d("LoggedTime: ", currentTime[Calendar.HOUR].toString() + " PM")
+            if (currentTime[Calendar.HOUR] >= 5){
+                binding.timeGreeting.text = "Good Evening"
+            }
+            else{
+                binding.timeGreeting.text = "Good Afternoon"
+            }
+        }
     }
 
     fun showLoader(){
@@ -64,6 +92,7 @@ class ActivityRequestAdvance : AppCompatActivity() {
         (alertDialog as SpotsDialog).setCancelable(false)
         (alertDialog as SpotsDialog).show()
     }
+
     fun hideLoader(){
 
         (alertDialog as SpotsDialog).hide()
@@ -112,7 +141,6 @@ class ActivityRequestAdvance : AppCompatActivity() {
 
     val textWatcher  = object : TextWatcher {
         override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
         }
 
         override fun onTextChanged(enteredText: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -130,7 +158,7 @@ class ActivityRequestAdvance : AppCompatActivity() {
     }
 
     private fun calculateDeductions(enteredText: CharSequence?) {
-        var passedText = enteredText
+//        var passedText = enteredText
         var tCharge: Int = 0
 
         val intCharged = enteredText.toString().toBigDecimal()
@@ -149,9 +177,15 @@ class ActivityRequestAdvance : AppCompatActivity() {
             .minus(tCharge.toBigDecimal())
             .minus(intCharged)
 
-        binding.finalAmount.text = finalAmount.toString()
+        val intChargedStrng = intCharged.toString().replace(".00", "")
+        //val formattedInterest = NumberFormat.getNumberInstance(Locale.US).format(intChargedStrng.toInt())
+        val usFormatter = NumberFormat.getInstance(Locale("en", "US"))
+//        val interestCharged = usFormatter.format(intChargedStrng.toInt())
 
-        binding.interestCharged.text =  "-" + intCharged.toString()
+//        val formattedInterest = String.format("%-10.4f%n%n", intChargedStrng)
+        binding.interestCharged.text =  "-" + intChargedStrng
+
+        binding.finalAmount.text = finalAmount.toString().replace(".00", "")
 
     }
 
@@ -197,6 +231,32 @@ class ActivityRequestAdvance : AppCompatActivity() {
                     Log.e("anError", anError?.message.toString())
                 }
             })
+    }
+
+    private fun showLogoutConfirmAlertDialog() {
+        val customView: View = layoutInflater.inflate(R.layout.confirm_action_alert, null)
+        val messageField = customView.findViewById<TextView>(R.id.message)
+        val confirmButton = customView.findViewById<Button>(R.id.btnProceed)
+        val cancelButton = customView.findViewById<Button>(R.id.btnCancel)
+
+        messageField.text = "You are about to Logout of your Account. Are you sure you want to perform this action?"
+        confirmButton.text = "Logout"
+
+        val builder = AlertDialog.Builder(this@ActivityRequestAdvance)
+        builder.setView(customView)
+        builder.setCancelable(false)
+        val dialog = builder.create()
+        dialog.show()
+
+        cancelButton.setOnClickListener { dialog.dismiss() }
+
+        confirmButton.setOnClickListener {
+            preferenceManager.apiKey = ""
+
+            val intent: Intent = Intent(this, ActivityLogin::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
 }

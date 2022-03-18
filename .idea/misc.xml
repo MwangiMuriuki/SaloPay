@@ -22,6 +22,8 @@
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.33152173913043476" />
         <entry key="app/src/main/res/layout/advance_transaction_layout.xml" value="0.34193840579710144" />
         <entry key="app/src/main/res/layout/confirm_action_alert.xml" value="0.34193840579710144" />
+        <entry key="app/src/main/res/layout/get_company_code_alert.xml" value="0.26979166666666665" />
+        <entry key="app/src/main/res/layout/session_expired_alert.xml" value="0.26979166666666665" />
       </map>
     </option>
   </component>
