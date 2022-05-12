@@ -215,8 +215,8 @@ class MainActivity : BaseActivity() {
     private fun redirect() {
         val intent: Intent = Intent(this, ActivityRequestAdvance::class.java)
         val bundle = Bundle()
-
         bundle.putSerializable("transaction_charges", transactionCharges as Serializable)
+
         intent.putExtra("interestRate", interestRate.toString())
         intent.putExtra("cycleID", cycle_id.toString())
         intent.putExtras(bundle)
