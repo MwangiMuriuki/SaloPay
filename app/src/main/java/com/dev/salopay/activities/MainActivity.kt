@@ -36,6 +36,7 @@ class MainActivity : BaseActivity() {
     var transactionsDataClass: List<CurrentAdvanceTransactionsDataClass.TransactionData.TransactionsList?> = ArrayList<CurrentAdvanceTransactionsDataClass.TransactionData.TransactionsList?>()
     var cycle_id: Int = 0
     var cycleIsActive: Boolean = true
+    var hasActiveCycle: Boolean = true
     var advanceLimit: Int? = 0
     var advanceLimitFormatted: String? = null
 
@@ -171,6 +172,7 @@ class MainActivity : BaseActivity() {
                             if (fetchedServiceData != null){
                                 cycle_id = fetchedServiceData.active_cycle?.id!!
                                 transactionCharges = response.data!!.transaction_charges!!
+                                hasActiveCycle = fetchedServiceData.has_active_cycle
                                 interestRate = fetchedServiceData.active_cycle?.rate!!
                                 cycleIsActive = fetchedServiceData.active_cycle?.is_open!!
 //                                cycleIsActive = false
@@ -182,18 +184,24 @@ class MainActivity : BaseActivity() {
                                 binding.advanceLimit.text = advanceLimit
                                 binding.previousAdvance.text = response.data?.previous_transaction
 
-                                if (cycleIsActive){
-                                    binding.requestAdvanceBtn.background = ContextCompat.getDrawable(this@MainActivity, R.drawable.accent_btn_background)
-                                    binding.requestAdvanceBtn.setOnClickListener {
-                                        redirect()
+                                if (hasActiveCycle){
+                                    if (cycleIsActive){
+                                        binding.requestAdvanceBtn.background = ContextCompat.getDrawable(this@MainActivity, R.drawable.accent_btn_background)
+                                        binding.requestAdvanceBtn.setOnClickListener {
+                                            redirect()
+                                        }
+                                    }
+                                    else{
+                                        binding.requestAdvanceBtn.background = ContextCompat.getDrawable(this@MainActivity, R.drawable.btn_grey_background)
+                                        binding.requestAdvanceBtn.setOnClickListener {
+                                            Toast.makeText(this@MainActivity, "The Advance Period for this month has been Closed. Please wait until the next period.", Toast.LENGTH_LONG).show()
+                                        }
                                     }
                                 }
                                 else{
-                                    binding.requestAdvanceBtn.background = ContextCompat.getDrawable(this@MainActivity, R.drawable.btn_grey_background)
-                                    binding.requestAdvanceBtn.setOnClickListener {
-                                        Toast.makeText(this@MainActivity, "The Advance Period for this month has been Closed. Please wait until the next period.", Toast.LENGTH_LONG).show()
-                                    }
+                                    Toast.makeText(this@MainActivity, "You do not have an active cycle. Please contact your HR", Toast.LENGTH_LONG).show()
                                 }
+
                             }
                         }
                         else{
